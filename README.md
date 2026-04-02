@@ -57,6 +57,10 @@ The following permissions are requested:
 If the app can't gain Carrier Privileges, some values can't be accessed and some features are disabled. See below.
 
 
+## Development environment
+For Codex/local and GitHub CI Android SDK setup instructions, see:
+- [`docs/codex_and_github_environment.md`](docs/codex_and_github_environment.md)
+
 ## SPDX-SBOM
 The SPDX formatted ```Software Bill Of Material``` is a machine readable list of all software components used in the app. To generate a new file run
 ```shell

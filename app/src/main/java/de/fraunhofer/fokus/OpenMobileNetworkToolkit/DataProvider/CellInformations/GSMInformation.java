@@ -61,7 +61,7 @@ public class GSMInformation extends CellInformation {
         lac = cellIdentityGsm.getLac();
         bsic = cellIdentityGsm.getBsic();
 
-        mcc = cellIdentityGsm.getMncString();
+        mcc = cellIdentityGsm.getMccString();
         timingAdvance = cellSignalStrengthGsm.getTimingAdvance();
         bitErrorRate =  cellSignalStrengthGsm.getBitErrorRate();
         dbm = cellSignalStrengthGsm.getDbm();
