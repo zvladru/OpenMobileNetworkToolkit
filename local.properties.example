@@ -1,0 +1,5 @@
+# Copy this file to local.properties and adjust sdk.dir for your machine.
+# Example macOS: /Users/<you>/Library/Android/sdk
+# Example Linux: /home/<you>/Android/Sdk
+# Example Windows (Git Bash): C:\\Users\\<you>\\AppData\\Local\\Android\\Sdk
+sdk.dir=/absolute/path/to/Android/Sdk
