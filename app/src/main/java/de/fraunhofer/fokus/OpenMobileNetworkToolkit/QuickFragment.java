@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import androidx.annotation.StringRes;
 import androidx.cardview.widget.CardView;
+import androidx.core.graphics.ColorUtils;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textview.MaterialTextView;
@@ -102,6 +103,22 @@ public class QuickFragment extends Fragment {
         return Color.rgb(red, green, blue);
     }
 
+
+    private void setReadableTextColor(CardView parentCardView, int backgroundColor) {
+        int textColor = ColorUtils.calculateLuminance(backgroundColor) > 0.5 ? Color.BLACK : Color.WHITE;
+        View child = parentCardView.getChildAt(0);
+        if (!(child instanceof ViewGroup)) {
+            return;
+        }
+        ViewGroup childGroup = (ViewGroup) child;
+        for (int i = 0; i < childGroup.getChildCount(); i++) {
+            View view = childGroup.getChildAt(i);
+            if (view instanceof TextView) {
+                ((TextView) view).setTextColor(textColor);
+            }
+        }
+    }
+
     /**
      * Modify the textview
      * @param textView The textview to be modified
@@ -122,9 +139,11 @@ public class QuickFragment extends Fragment {
         textView.setTextSize(determineTextSize(value));
         if(min == Integer.MAX_VALUE || max == Integer.MAX_VALUE) return;
         CardView parent = (CardView) textView.getParent().getParent();
-        parent.setCardBackgroundColor(getColor(min, max, Float.parseFloat(value),
+        int backgroundColor = getColor(min, max, Float.parseFloat(value),
                 Integer.toHexString(context.getColor(minColor)).substring(2),
-                Integer.toHexString(context.getColor(maxColor)).substring(2)));
+                Integer.toHexString(context.getColor(maxColor)).substring(2));
+        parent.setCardBackgroundColor(backgroundColor);
+        setReadableTextColor(parent, backgroundColor);
     }
 
     /**
